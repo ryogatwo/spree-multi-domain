@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::Admin::ProductsController do
+describe Spree::Admin::ProductsController, type: :controller do
   stub_authorization!
 
   describe "on :index" do

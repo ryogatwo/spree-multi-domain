@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'capybara', '~> 1.1.4'
   s.add_development_dependency 'coffee-rails'
-  s.add_development_dependency 'factory_girl', '~> 4.3.0'
+  s.add_development_dependency 'factory_girl', '~> 4.5.0'
   s.add_development_dependency 'ffaker'
   s.add_development_dependency 'rspec-rails',  '~> 2.7'
   s.add_development_dependency 'sass-rails', '~> 4.0.2'

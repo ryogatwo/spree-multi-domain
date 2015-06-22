@@ -8,7 +8,7 @@ module SpreeMultiDomain
       end
 
       def add_migrations
-        run 'rake railties:install:migrations FROM=spree_multi_domain'
+        run 'bundle exec rake railties:install:migrations FROM=spree_multi_domain'
       end
 
       def run_migrations

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Spree::ProductsController do
+describe Spree::ProductsController, type: :controller do
 
   let!(:product) { FactoryGirl.create(:product) }
 
