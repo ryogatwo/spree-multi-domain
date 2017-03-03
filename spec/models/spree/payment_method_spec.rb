@@ -5,7 +5,7 @@ describe 'PaymentMethod' do
     subject { Spree::PaymentMethod.available(:front_end, store) }
 
     let!(:check_payment_method) { FactoryGirl.create :check_payment_method }
-    let(:payment_method_store) { FactoryGirl.create :store, :payment_methods => [check_payment_method] }
+    let(:payment_method_store) { FactoryGirl.create :store, payment_methods: [check_payment_method] }
 
     context "when store is not specified" do
       let(:store) { nil }

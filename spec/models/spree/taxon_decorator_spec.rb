@@ -27,4 +27,22 @@ describe Spree::Taxon do
       end
     end
   end
+
+  describe 'scopes' do
+    describe '.by_store' do
+      before(:each) do
+        @store = FactoryGirl.create(:store)
+        @taxonomy = FactoryGirl.create(:taxonomy, store: @store)
+        @taxon = FactoryGirl.create(:taxon, taxonomy: @taxonomy)
+        @taxon2 = FactoryGirl.create(:taxon)
+      end
+
+      it 'correctly finds taxon by store' do
+        taxon_by_store = Spree::Taxon.by_store(@store)
+
+        taxon_by_store.should include(@taxon)
+        taxon_by_store.should_not include(@taxon2)
+      end
+    end
+  end
 end

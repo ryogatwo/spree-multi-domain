@@ -4,7 +4,7 @@ module Spree
   describe ProductsHelper do
     before(:each) do
       @store     = FactoryGirl.create(:store)
-      @taxonomy  = FactoryGirl.create(:taxonomy, :store => @store)
+      @taxonomy  = FactoryGirl.create(:taxonomy, store: @store)
       @taxonomy2 = FactoryGirl.create(:taxonomy)
 
       helper.stub(:current_store) { @store }

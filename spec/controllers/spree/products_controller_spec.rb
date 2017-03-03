@@ -8,7 +8,7 @@ describe Spree::ProductsController do
     let!(:store) { FactoryGirl.create(:store) }
 
     it 'should return 404' do
-      spree_get :show, :id => product.to_param
+      spree_get :show, id: product.to_param
 
       response.response_code.should == 404
     end
@@ -24,8 +24,8 @@ describe Spree::ProductsController do
     end
 
     it 'should return 404' do
-      controller.stub(:current_store => store_2)
-      spree_get :show, :id => product.to_param
+      controller.stub(current_store: store_2)
+      spree_get :show, id: product.to_param
 
       response.response_code.should == 404
     end
@@ -39,8 +39,8 @@ describe Spree::ProductsController do
     end
 
     it 'should return 200' do
-      controller.stub(:current_store => store)
-      spree_get :show, :id => product.to_param
+      controller.stub(current_store: store)
+      spree_get :show, id: product.to_param
 
       response.response_code.should == 200
     end

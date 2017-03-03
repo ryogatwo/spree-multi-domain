@@ -7,7 +7,7 @@ class RemoveDatetimeColumnsFromProductsStores < ActiveRecord::Migration
 
   def self.down
     change_table :products_stores do |t|
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

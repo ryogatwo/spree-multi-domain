@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Spree::ShippingMethod do
   let(:shipping_method) { create :shipping_method }
-  let(:order) { create :order, :store => store }
+  let(:order) { create :order, store: store }
   let(:store) { create :store }
 
   describe '.store_match?' do

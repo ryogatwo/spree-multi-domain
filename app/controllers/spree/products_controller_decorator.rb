@@ -1,6 +1,6 @@
 Spree::ProductsController.class_eval do
 
-  before_filter :can_show_product, :only => :show
+  before_filter :can_show_product, only: :show
 
   private
 
@@ -10,5 +10,4 @@ Spree::ProductsController.class_eval do
       raise ActiveRecord::RecordNotFound
     end
   end
-
 end

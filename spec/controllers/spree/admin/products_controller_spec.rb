@@ -19,20 +19,41 @@ describe Spree::Admin::ProductsController do
     describe "when no stores are selected" do
       it "clears stores if they previously existed" do
         @product.stores << @store
+        spree_put :update,
+          id: @product.to_param,
+          product: {
+            name: @product.name
+          }
 
-        spree_put :update, :id => @product.to_param,
-                      :product => {:name => @product.name}
-
-        @product.reload.store_ids.should be_empty
+        expect(@product.reload.store_ids).to be_empty
       end
     end
 
     describe "when a store is selected" do
       it "clears stores" do
-        spree_put :update, :id => @product.to_param,
-                      :product => {:name => @product.name, :store_ids => [@store.id]}
+        spree_put :update,
+          id: @product.to_param,
+          product: {
+            name: @product.name,
+            store_ids: @store.id
+          }
 
-        @product.reload.store_ids.should == [@store.id]
+        expect(@product.reload.store_ids).to include(@store.id)
+      end
+    end
+
+    describe "when multiple stores are selected" do
+      it "clears stores" do
+        stores = FactoryGirl.create_list(:store, 3)
+        store_ids = stores.map(&:id)
+        spree_put :update,
+          id: @product.to_param,
+          product: {
+            name: @product.name,
+            store_ids: store_ids.join(",")
+          }
+
+        expect(@product.reload.store_ids).to eq(store_ids)
       end
     end
   end
